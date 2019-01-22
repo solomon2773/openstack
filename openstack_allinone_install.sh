@@ -23,7 +23,7 @@ yum update -y
 ##echo "Install Packstack Installer"
 
 yum install -y openstack-packstack 
-
+hostname cloud0.mywebsite.com
 
 #### Run Packstack to install OpenStack
 
