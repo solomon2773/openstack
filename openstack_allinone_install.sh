@@ -46,7 +46,7 @@ EOF
 
 echo "Run Packstack to install OpenStack All in One"
 packstack --gen-answer-file=answers.txt
-packstack --allinone --answer-file=answers.txt
+packstack  --answer-file=answers.txt
 
 END=$(date +%s.%N)
 DIFF=$(echo "$END - $START" | bc)
