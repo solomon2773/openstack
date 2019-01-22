@@ -10,6 +10,14 @@ systemctl stop NetworkManager
 systemctl enable network
 systemctl start network
 
+
+export LC_TYPE="UTF-8"
+export LANG="en-US.UTF-8"
+export LC_ALL="C"
+
+cat /etc/selinux/config | grep -v '^#' | grep disabled
+ SELINUX=disabled
+ 
 ###   Software repositories
 echo "Software Repositories Setup"
 
