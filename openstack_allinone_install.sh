@@ -24,6 +24,15 @@ yum update -y
 
 yum install -y openstack-packstack 
 hostname cloud0.mywebsite.com
+###
+# Create proper /etc/hosts file
+
+cat <<- EOF > /etc/hosts
+127.0.0.1   localhost
+192.168.11.100 cloud0.yottacommerce.com
+192.168.11.101 cloud1.yottacommerce.com
+192.168.11.102 cloud2.yottacommerce.com
+EOF
 
 #### Run Packstack to install OpenStack
 
