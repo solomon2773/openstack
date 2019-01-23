@@ -49,6 +49,13 @@ echo "Run Packstack to install OpenStack All in One"
 #packstack  --answer-file=answers.txt
 packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat
 
+. keystonerc_admin
+neutron net-create external_network --provider:network_type flat --provider:physical_network extnet  --router:external
+
+neutron subnet-create --name public_subnet --enable_dhcp=False --allocation-pool=start=xxx.xxx.xxx.xxx,end=xxx.xxx.xxx.xxx \
+                        --gateway=xxx.xxx.xxx.xxx external_network xxx.xxx.xxx.0/24
+
+
 END=$(date +%s.%N)
 DIFF=$(echo "$END - $START" | bc)
 echo "Done"
