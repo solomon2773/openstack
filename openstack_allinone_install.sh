@@ -31,7 +31,7 @@ yum update -y
 ##echo "Install Packstack Installer"
 
 yum install -y openstack-packstack 
-hostname cloud0.mywebsite.com
+hostname cloud0.yottacommerce.com
 ###
 # Create proper /etc/hosts file
 
@@ -45,8 +45,9 @@ EOF
 #### Run Packstack to install OpenStack
 
 echo "Run Packstack to install OpenStack All in One"
-packstack --gen-answer-file=answers.txt
-packstack  --answer-file=answers.txt
+#packstack --gen-answer-file=answers.txt
+#packstack  --answer-file=answers.txt
+packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat
 
 END=$(date +%s.%N)
 DIFF=$(echo "$END - $START" | bc)
