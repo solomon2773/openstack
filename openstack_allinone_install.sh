@@ -32,6 +32,9 @@ yum update -y
 
 yum install -y openstack-packstack 
 hostname cloud0.yottacommerce.com
+cat <<- EOF > /etc/hostname
+cloud0.yottacommerce.com
+EOF
 ###
 # Create proper /etc/hosts file
 
