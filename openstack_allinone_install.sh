@@ -39,10 +39,16 @@ EOF
 # Create proper /etc/hosts file
 
 cat <<- EOF > /etc/hosts
-127.0.0.1   localhost
-192.168.11.100 cloud0.yottacommerce.com
-192.168.11.101 cloud1.yottacommerce.com
-192.168.11.102 cloud2.yottacommerce.com
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.11.100 cloud0 cloud0.yottacommerce.com
+192.168.11.101 cloud1 cloud1.yottacommerce.com
+192.168.11.102 cloud2 cloud2.yottacommerce.com
+EOF
+
+
+cat <<- EOF > /etc/sysconfig/network
+HOSTNAME=cloud0.yottacommerce.com
 EOF
 
 #### Run Packstack to install OpenStack
@@ -50,7 +56,7 @@ EOF
 echo "Run Packstack to install OpenStack All in One"
 #packstack --gen-answer-file=answers.txt
 #packstack  --answer-file=answers.txt
-packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eth0 --os-neutron-ml2-type-drivers=vxlan,flat
+packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eno1 --os-neutron-ml2-type-drivers=vxlan,flat
 
 . keystonerc_admin
 neutron net-create external_network --provider:network_type flat --provider:physical_network extnet  --router:external
