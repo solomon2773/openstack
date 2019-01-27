@@ -31,11 +31,13 @@ yum update -y
 ##echo "Install Packstack Installer"
 
 yum install -y openstack-packstack 
+
+# Edit hostname file
 hostname cloud0.yottacommerce.com
 cat <<- EOF > /etc/hostname
 cloud0.yottacommerce.com
 EOF
-###
+
 # Create proper /etc/hosts file
 
 cat <<- EOF > /etc/hosts
@@ -46,7 +48,7 @@ cat <<- EOF > /etc/hosts
 192.168.11.102 cloud2 cloud2.yottacommerce.com
 EOF
 
-
+# Create proper /etc/sysconfig/network file
 cat <<- EOF > /etc/sysconfig/network
 HOSTNAME=cloud0.yottacommerce.com
 EOF
