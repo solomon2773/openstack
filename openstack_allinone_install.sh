@@ -25,7 +25,7 @@ yum install -y centos-release-openstack-rocky
 yum install -y yum-utils --enablerepo="base"
 yum-config-manager --enable openstack-rocky
 yum update -y
-
+yum install -y deltarpm
 
 #### Install Packstack Installer
 ##echo "Install Packstack Installer"
