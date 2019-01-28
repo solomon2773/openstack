@@ -58,7 +58,7 @@ EOF
 echo "Run Packstack to install OpenStack All in One"
 #packstack --gen-answer-file=answers.txt
 #packstack  --answer-file=answers.txt
-packstack --allinone --provision-demo=n --os-heat-install=y --os-sahara-install=y --os-trove-install=y --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eno1 --os-neutron-ml2-type-drivers=vxlan,flat
+packstack --allinone --provision-demo=n --os-heat-install=y --os-sahara-install=y --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eno1 --os-neutron-ml2-type-drivers=vxlan,flat
 
 . keystonerc_admin
 neutron net-create external_network --provider:network_type flat --provider:physical_network extnet  --router:external
