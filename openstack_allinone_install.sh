@@ -58,7 +58,10 @@ EOF
 echo "Run Packstack to install OpenStack All in One"
 #packstack --gen-answer-file=answers.txt
 #packstack  --answer-file=answers.txt
-packstack --allinone --provision-demo=n --os-heat-install=y --os-sahara-install=y --ntp-servers=0.rhel.pool.ntp.org,1.rhel.pool.ntp.org --os-swift-storage-size=100G --cinder-volumes-size=500G --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ovs-bridge-interfaces=br-ex:eno0 --os-neutron-ml2-type-drivers=vxlan,flat
+packstack --allinone --provision-demo=n --os-heat-install=y --os-sahara-install=y --ntp-servers=0.rhel.pool.ntp.org,1.rhel.pool.ntp.org --os-swift-storage-size=190G --cinder-volumes-size=2800G --os-neutron-ovs-bridge-mappings=extnet:br-ex,extnet1:br-ex1 --os-neutron-ovs-bridge-interfaces=br-ex:eno0,br-ex1:eno1 --os-neutron-ml2-type-drivers=vxlan,flat
+
+#packstack --allinone --provision-demo=n --os-heat-install=y --os-sahara-install=y --ntp-servers=0.rhel.pool.ntp.org,1.rhel.pool.ntp.org --os-swift-storage-size=100G --cinder-volumes-size=900G --os-neutron-ovs-bridge-mappings=extnet:br-ex,extnet1:br-ex1 --os-neutron-ovs-bridge-interfaces=br-ex:eno0,br-ex1:eno1 --os-neutron-ml2-type-drivers=vxlan,flat
+
 
 . keystonerc_admin
 neutron net-create external_network --provider:network_type flat --provider:physical_network extnet  --router:external
