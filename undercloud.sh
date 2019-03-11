@@ -24,6 +24,24 @@ sudo -E tripleo-repos current-tripleo-dev ceph
 sudo yum install -y python-tripleoclient
 sudo yum install -y ceph-ansible
 
+# Edit hostname file
+sudo hostname undercloud0.yottacommerce.com
+sudo cat <<- EOF > /etc/hostname
+undercloud0.yottacommerce.com
+EOF
+
+# Create proper /etc/hosts file
+
+cat <<- EOF > /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.11.200 undercloudcloud0 cloud0.yottacommerce.com
+EOF
+
+
+
+
+
 #Prepare the configuration file:
 cp /usr/share/python-tripleoclient/undercloud.conf.sample ~/undercloud.conf
 
