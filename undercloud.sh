@@ -35,7 +35,7 @@ EOF
 cat <<- EOF > /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.11.200 undercloudcloud0 cloud0.yottacommerce.com
+192.168.11.210 undercloudcloud0 cloud0.yottacommerce.com
 EOF
 
 
