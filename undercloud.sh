@@ -24,7 +24,8 @@ sudo -E tripleo-repos current-tripleo-dev ceph
 sudo yum install -y python-tripleoclient
 sudo yum install -y ceph-ansible
 
-
-
+#Prepare the configuration file:
+#cp /usr/share/python-tripleoclient/undercloud.conf.sample ~/undercloud.conf
 
 # undercloud config file generate http://ucw.tripleo.org/
+
